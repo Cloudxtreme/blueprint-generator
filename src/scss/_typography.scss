@@ -29,6 +29,14 @@ h1 {
 	color: $grey;
 	margin: 0 0 $baseline 0;
 }
+h2 {
+	position: relative;
+	font-size: $h2-size;
+	
+  	line-height: $baseline * 2;
+	color: $grey;
+	margin: 0 0 $baseline 0;
+}
 
 p {
 	margin: 0 0 $baseline;

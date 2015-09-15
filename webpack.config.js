@@ -5,9 +5,7 @@ module.exports = {
   cache: true,
   entry: [
     "./src/app/app.js",
-    "./src/scss/styles.scss",
-    'webpack-dev-server/client?http://localhost:8080',
-    'webpack/hot/dev-server',
+    "./src/scss/styles.scss"
   ],
   devtool: 'source-map',
   output: {
@@ -31,7 +29,6 @@ module.exports = {
     ]
   },
   plugins: [
-    new ExtractTextPlugin('styles.css'),
-    new webpack.HotModuleReplacementPlugin()
+    new ExtractTextPlugin('styles.css')
   ]
 };

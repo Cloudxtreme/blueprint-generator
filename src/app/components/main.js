@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import AppHeader from './appHeader.js';
 import GeneratorForm from './generatorForm.js';
+import GeneratedBlueprint from './generatedBlueprint.js';
 
 class Main extends Component {
 	render() {
@@ -9,6 +10,7 @@ class Main extends Component {
 			<div className="container">
 				<AppHeader />
 				<GeneratorForm />
+				<GeneratedBlueprint />
 	  	</div>);
 	}
 };

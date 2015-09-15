@@ -10,7 +10,15 @@ gulp.task('default', ['copy', 'webpack-dev-server']);
 gulp.task('dist', ['copy', 'webpack:build']);
 
 gulp.task("webpack-dev-server", function(callback) {
-  var compiler = webpack(webpackConfig);
+	var myConfig = Object.create(webpackConfig);
+	myConfig.plugins = myConfig.plugins.concat(
+		new webpack.HotModuleReplacementPlugin()
+	);
+	myConfig.entry = myConfig.entry.concat(
+		'webpack-dev-server/client?http://localhost:8080',
+    'webpack/hot/dev-server'
+	);
+  var compiler = webpack(myConfig);
 
   new WebpackDevServer(compiler, {
    	contentBase: "./dist/",

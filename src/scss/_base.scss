@@ -1,12 +1,25 @@
 $baseline: 22px;
 
+* {
+	box-sizing: border-box;
+}
+
 body {
 	max-width: 100%;
 	overflow-x: hidden;
 	background-color: white;
 }
 .container {
-	max-width: 40rem;
+	max-width: $baseline * 40;
 	margin: 0 auto;
-	padding-top: $baseline;
+	padding: $baseline;
+}
+.section {
+	border: 2px solid $grey-light;
+	padding: $baseline $baseline 0 ;
+	margin-bottom: $baseline;
+
+	&:hover {
+		border-left: 2px solid $blue;
+	}
 }

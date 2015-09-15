@@ -6,6 +6,6 @@ Thumbs.db
 *.sublime-workspace
 node_modules
 npm-debug.log
-build
 images/sprites*.png
 images/sprites-retina-*.png
+dist

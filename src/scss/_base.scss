@@ -1,0 +1,12 @@
+$baseline: 22px;
+
+body {
+	max-width: 100%;
+	overflow-x: hidden;
+	background-color: white;
+}
+.container {
+	max-width: 40rem;
+	margin: 0 auto;
+	padding-top: $baseline;
+}

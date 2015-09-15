@@ -1,0 +1,18 @@
+#header {
+	height: $baseline * 2;
+	margin-bottom: $baseline;
+
+	h1 {
+		display: inline-block;
+		float: right;
+		padding-top: 2px;
+		margin-bottom: $baseline - 2px;
+	}
+	.logo {
+		display: inline;
+		vertical-align: bottom;
+		width: auto;
+		height: 2rem;
+		margin-top: 0.5rem;
+	}
+}

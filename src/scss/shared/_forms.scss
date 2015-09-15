@@ -1,0 +1,14 @@
+label {
+	display: block;
+	margin: 0 0 $baseline / 2;
+}
+
+input {
+	display: block;
+	margin-bottom: $baseline;
+	width: 100%;
+	height: $baseline;
+	padding: $baseline / 2;
+	border: none;
+	background-color: $grey-light;
+}

@@ -2,16 +2,17 @@ import React, { Component } from 'react';
 
 class GeneratedBlueprint extends Component {
 
-	//Event handlers
-	handleSubmit(e) {
-		e.preventDefault();
-		console.log('submit!');
-	}
+  constructor(props) {
+    super(props);
+    this.state = {
+      bluerpintTemplate: ''
+    }
+  }
 
-	// Render
-	render() {
-
-		let blueprintTemplate = `name: sava:1.0
+  componentWillReceiveProps(nextProps){
+    console.log(nextProps);
+    if(!nextProps.errors && Object.keys(nextProps.inputValues).length !== 0){
+      let blueprintTemplate = `name: sava:1.0
 endpoints:
   sava.port: 9050/http
 clusters:
@@ -41,10 +42,16 @@ clusters:
           instances: 1
         routing:
           weight: 50`;
+      this.setState({ bluerpintTemplate: blueprintTemplate });
+    }
+  }
+
+	// Render
+	render() {
 
 		return (
 			<textarea rows='30'>
-				{blueprintTemplate}
+				{this.state.blueprintTemplate}
 	  	</textarea>);
 	}
 };

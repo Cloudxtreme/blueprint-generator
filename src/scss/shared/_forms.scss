@@ -28,6 +28,13 @@ aside {
 	padding-top: $baseline * 1.2;
 }
 
+.submit-button {
+	display: block;
+	margin: 0 auto $baseline;
+	font-size: $h3-size;
+	padding: $baseline / 2 $baseline;
+}
+
 // Range slider needs a lot of custom styles
 @mixin track($lower: true) {
   	box-sizing: border-box;

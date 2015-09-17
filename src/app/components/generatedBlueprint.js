@@ -1,59 +1,37 @@
 import React, { Component } from 'react';
+import GeneratorStore from '../stores/generatorStore';
 
 class GeneratedBlueprint extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      bluerpintTemplate: ''
+      blueprintTemplate: ''
     }
   }
+  componentWillMount() {
+    GeneratorStore.addChangeListener(this._onChange.bind(this));
+  }
+  componentWillUnmount() {
+    GeneratorStore.removeChangeListener(this._onChange.bind(this));
+  }
 
-  componentWillReceiveProps(nextProps){
-    console.log(nextProps);
-    if(!nextProps.errors && Object.keys(nextProps.inputValues).length !== 0){
-      let blueprintTemplate = `name: sava:1.0
-endpoints:
-  sava.port: 9050/http
-clusters:
-  sava:
-    services: # services is now a list of breeds
-      -
-        breed:
-          name: sava:1.0.0
-          deployable: magneticio/sava:1.0.0
-          ports:
-            port: 8080/http
-        scale:
-          cpu: 0.2
-          memory: 256
-          instances: 1
-        routing:
-          weight: 50  # weight in percentage
-      -
-        breed:
-          name: sava:1.1.0 # a new version of our service
-          deployable: magneticio/sava:1.1.0
-          ports:
-            port: 8080/http
-        scale:
-          cpu: 0.2
-          memory: 256
-          instances: 1
-        routing:
-          weight: 50`;
-      this.setState({ bluerpintTemplate: blueprintTemplate });
-    }
+  handleChange(e) {
+    this.setState({ blueprintTemplate: e.currentTarget.value });
   }
 
 	// Render
 	render() {
 
 		return (
-			<textarea rows='30'>
-				{this.state.blueprintTemplate}
+			<textarea rows='30' value={this.state.blueprintTemplate} onChange={this.handleChange.bind(this)}>
 	  	</textarea>);
 	}
+
+  _onChange(){
+    console.log(GeneratorStore.getBlueprint());
+    this.setState({ blueprintTemplate: GeneratorStore.getBlueprint() });
+  }
 };
 
 export default GeneratedBlueprint

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import GeneratorActions from '../actions/generatorActions.js';
 
 class GeneratorForm extends Component {
 
@@ -13,17 +14,18 @@ class GeneratorForm extends Component {
 			variantName: '',
 			variantDeployable: '',
 			variantPort: '',
-			distribution: 50
+			distribution: '50'
 		}
 	}
 
 	//Event handlers
 	handleSubmit(e) {
 		e.preventDefault();
-		this.props.generateBlueprint(this.state);
+		GeneratorActions.generate(this.state);
 	}
 	handleRangeAdjust(e){
-		console.log(this.state.distribution);
+		console.log(e.currentTarget.value);
+		console.log(this.state);
 		this.setState({ distribution: e.currentTarget.value });
 	}
 	handleInputChange(property, e){

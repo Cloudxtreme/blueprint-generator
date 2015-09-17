@@ -5,7 +5,7 @@ class AppHeader extends Component {
 		return (
 			<header id='header'>
 				<img src='img/vamp_logo.svg' width='134px' height='32px' className='logo' />
-				<h1>Blueprint generator</h1>
+				<h1>A/B Blueprint generator</h1>
 	  	</header>);
 	}
 };

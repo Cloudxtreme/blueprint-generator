@@ -1,5 +1,6 @@
 var gulp = require('gulp');
 var gutil = require("gulp-util");
+var connect = require('gulp-connect');
 var path = require('path');
 var webpack = require("webpack");
 var WebpackDevServer = require("webpack-dev-server");
@@ -8,9 +9,23 @@ var ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 gulp.task('default', ['copy', 'webpack-dev-server']);
 gulp.task('dist', ['copy', 'webpack:build']);
+gulp.task('serve', function() {
+  connect.server({
+  	port: 3000,
+  	root: 'dist',
+  });
+});
 
 gulp.task("webpack-dev-server", function(callback) {
-  var compiler = webpack(webpackConfig);
+	var myConfig = Object.create(webpackConfig);
+	myConfig.plugins = myConfig.plugins.concat(
+		new webpack.HotModuleReplacementPlugin()
+	);
+	myConfig.entry = myConfig.entry.concat(
+		'webpack-dev-server/client?http://localhost:8080',
+    'webpack/hot/dev-server'
+	);
+  var compiler = webpack(myConfig);
 
   new WebpackDevServer(compiler, {
    	contentBase: "./dist/",

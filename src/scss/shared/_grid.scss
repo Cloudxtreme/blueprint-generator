@@ -1,0 +1,29 @@
+.grid {
+
+}
+.column {
+	display: inline-block;
+	margin-right: $baseline;
+	vertical-align: top;
+}
+.full-size {
+	width: 100%;
+	margin-right: 0;
+}
+.half-size {
+	width: calc(50% - #{$baseline / 2});
+	&:nth-of-type(2) {
+		margin-right: 0;
+	}
+}
+.third-size {
+	width: calc(33% - #{$baseline / 3});
+	vertical-align: top;
+
+	&:nth-of-type(even) {
+		margin-right: 0;
+	}
+	&.double {
+		width: calc(66% - #{$baseline / 2});
+	}
+}
